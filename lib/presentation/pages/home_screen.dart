@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:spotify_clone_app/presentation/widgets/searched_album_widget.dart';
+import 'package:spotify_clone_app/widgets/searched_album_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

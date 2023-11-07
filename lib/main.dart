@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_clone_app/presentation/pages/home_screen.dart';
+import 'package:spotify_clone_app/screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
