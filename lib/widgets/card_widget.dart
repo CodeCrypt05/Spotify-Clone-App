@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_clone_app/models/post_model/meal/data.dart';
 
 class CardWidget extends StatelessWidget {
   const CardWidget({
     super.key,
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.body,
+    required this.currentMealData,
   });
 
-  final String userId;
-  final String id;
-  final String title;
-  final String body;
+  final CurrentMealData currentMealData;
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +26,7 @@ class CardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'User Id: ' + userId,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.normal, fontSize: 18),
-                  ),
-                  Text(
-                    'Title: ' + title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.normal, fontSize: 18),
-                  ),
-                  Text(
-                    'Description: ' + body,
+                    'User Id: ${currentMealData.data.totalPages}',
                     style: const TextStyle(
                         fontWeight: FontWeight.normal, fontSize: 18),
                   ),

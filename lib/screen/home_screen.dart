@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_clone_app/models/post_model/post_model.dart';
-import 'package:spotify_clone_app/services/fetch_api.dart';
+import 'package:spotify_clone_app/models/meal_data.dart';
+import 'package:spotify_clone_app/services/fetch_meal_api.dart';
 import 'package:spotify_clone_app/widgets/card_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,8 +11,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  FetchAPI fetchAPI = FetchAPI();
-  List<PostModel> postList = [];
+  final mealData = MealData();
+  FetchMealAPI fetchMealAPI = FetchMealAPI();
+
+  MealData getData() {
+    return mealData;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // showing post data
-  FutureBuilder<List<PostModel>> _postBuilder(BuildContext context) {
-    return FutureBuilder<List<PostModel>>(
-      future: fetchAPI.postData(),
+  FutureBuilder<MealData> _postBuilder(BuildContext context) {
+    return FutureBuilder<MealData>(
+      future: fetchMealAPI.mealAPI(1),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -37,13 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
           return Text('Error: ${snapshot.error}');
         } else {
           return ListView.builder(
-            itemCount: postList.length,
+            itemCount: 2,
             itemBuilder: (context, index) {
               return CardWidget(
-                userId: postList[index].id.toString(),
-                id: postList[index].userId.toString(),
-                title: postList[index].title.toString(),
-                body: postList[index].body.toString(),
+                currentMealData: getData().getCurrentMealData(),
               );
             },
           );
